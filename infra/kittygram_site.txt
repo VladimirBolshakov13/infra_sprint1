@@ -1,0 +1,5 @@
+IP: 89.169.166.91;
+name_taski: https://vbolshakov.ddns.net/;
+name_kittygram: https://vbolshakovinfra.ddns.net/;
+login: superuser;
+password: Qwerty20vladimir;

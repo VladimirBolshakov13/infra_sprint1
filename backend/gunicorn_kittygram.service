@@ -4,8 +4,13 @@ After=network.target
 
 [Service]
 User=yc-user
-WorkingDirectory=/home/yc-user/infra_sprint1/infra/backend
+WorkingDirectory=/home/yc-user/infra_sprint1/venv/bin/gunicorn
 ExecStart=/home/yc-user/infra_sprint1/infra/venv/bin/gunicorn --bind 0.0.0.0:8080 kittygram.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
+
+
+
+
+

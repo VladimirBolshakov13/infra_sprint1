@@ -1,0 +1,43 @@
+server {
+
+        server_name 89.169.166.91 vbolshakovinfra.ddns.net;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location /admin/ {
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location / {
+
+        root   /var/www/Taski;
+        index  index.html index.htm;
+        try_files $uri /index.html =404;
+        }
+
+# Далее идут новые настройки и описание путей к сертификату.
+
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/testtaski.hopto.org/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/testtaski.hopto.org/privkey.pem; 
+    include /etc/letsencrypt/options-ssl-nginx.conf; 
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+}
+
+server {
+    if ($host = vbolshakovinfra.ddns.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+
+    listen       80;
+
+    server_name server_name 89.169.166.91 vbolshakovinfra.ddns.net;
+    return 404; # managed by Certbot
+
+
+}
